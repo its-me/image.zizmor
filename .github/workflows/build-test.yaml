@@ -31,11 +31,8 @@ jobs:
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - uses: nick-fields/retry@v3
+      - uses: docker/build-push-action@v6
         with:
-          timeout_minutes: 30
-          max_attempts: 3
-          command: >-
-            docker buildx build
-            --build-arg ZIZMOR_VERSION=${{ steps.version.outputs.version }}
-            .
+          context: .
+          push: false
+          build-args: ZIZMOR_VERSION=${{ steps.version.outputs.version }}
