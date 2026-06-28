@@ -116,8 +116,17 @@ jobs:
 
       - name: Resolve tags
         id: tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "list=latest ${{ needs.resolve-version.outputs.version }}" >> $GITHUB_OUTPUT
+          current="${{ needs.resolve-version.outputs.version }}"
+          existing=$(gh api repos/${{ github.repository }}/tags --paginate --jq '.[].name | ltrimstr("v")')
+          latest=$(printf "%s\n%s\n" "$existing" "$current" | sort -V | tail -1)
+          if [ "$current" = "$latest" ]; then
+            echo "list=latest $current" >> $GITHUB_OUTPUT
+          else
+            echo "list=$current" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create manifest
         run: |
