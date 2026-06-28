@@ -11,5 +11,4 @@ FROM alpine:latest
 
 COPY --from=builder /usr/local/cargo/bin/zizmor /usr/local/bin/zizmor
 
-WORKDIR /work
-CMD ["zizmor"]
+ENTRYPOINT ["/usr/local/bin/zizmor"]
