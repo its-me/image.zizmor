@@ -120,9 +120,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           current="${{ needs.resolve-version.outputs.version }}"
-          existing=$(gh api repos/${{ github.repository }}/tags --paginate --jq '.[].name | ltrimstr("v")')
-          latest=$(printf "%s\n%s\n" "$existing" "$current" | sort -V | tail -1)
-          if [ "$current" = "$latest" ]; then
+          highest=$(gh api repos/${{ github.repository }}/tags --paginate --jq '.[].name | ltrimstr("v")' | grep -v '^$' | sort -V | tail -1)
+          if [ -z "$highest" ] || [ "$(printf '%s\n%s\n' "$highest" "$current" | sort -V | tail -1)" = "$current" ]; then
             echo "list=latest $current" >> $GITHUB_OUTPUT
           else
             echo "list=$current" >> $GITHUB_OUTPUT

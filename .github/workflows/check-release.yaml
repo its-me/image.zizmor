@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-slim
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v7
         with:
@@ -26,4 +27,5 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git tag -a "v$latest" -m "v$latest"
             git push origin "v$latest"
+            gh workflow run build-and-deploy.yaml -f tag="v$latest"
           fi
