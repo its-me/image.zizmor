@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  zizmor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: its-me/zizmor@v0
+        with:
+          config: |
+            rules:
+              artipacked:
+                disable: true
+              unpinned-uses:
+                disable: true
