@@ -21,6 +21,10 @@
 | Docker Hub | [hub.docker.com/r/1tsme/zizmor](https://hub.docker.com/r/1tsme/zizmor) |
 | Quay.io | [quay.io/repository/itsme/zizmor](https://quay.io/repository/itsme/zizmor) |
 
+## GitHub Action
+
+[its-me/action.zizmor](https://github.com/its-me/action.zizmor) is a GitHub Action that runs zizmor using this image.
+
 ## License
 
 [MIT](LICENSE)

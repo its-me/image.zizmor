@@ -20,3 +20,11 @@ Source: [github.com/its-me/image.zizmor](https://github.com/its-me/image.zizmor)
 - [GitHub Container Registry](https://ghcr.io/its-me/zizmor)
 - [Docker Hub](https://hub.docker.com/r/1tsme/zizmor)
 - [Quay.io](https://quay.io/repository/itsme/zizmor)
+
+## GitHub Action
+
+[its-me/action.zizmor](https://github.com/its-me/action.zizmor) is a GitHub Action that runs zizmor using this image.
+
+## License
+
+[MIT](https://github.com/its-me/image.zizmor/blob/main/LICENSE)
