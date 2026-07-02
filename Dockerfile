@@ -19,4 +19,6 @@ LABEL org.opencontainers.image.authors="Sergey Kanafyev <sergeykanafyev@gmail.co
 
 COPY --from=builder /usr/local/cargo/bin/zizmor /usr/local/bin/zizmor
 
+RUN zizmor --version
+
 ENTRYPOINT ["/usr/local/bin/zizmor"]
