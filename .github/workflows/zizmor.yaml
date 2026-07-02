@@ -1,23 +1,26 @@
-name: CI
+name: zizmor
 
 on:
   push:
+    branches: ['**']
+  pull_request:
   workflow_dispatch:
 
 permissions:
-  contents: read
   security-events: write
+  contents: read
+  actions: read
 
 jobs:
   zizmor:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: its-me/action.zizmor@main
+        with:
+          persist-credentials: false
+      - uses: its-me/action.zizmor@v1
         with:
           config: |
             rules:
-              artipacked:
-                disable: true
               unpinned-uses:
                 disable: true
