@@ -4,7 +4,7 @@ ARG ZIZMOR_VERSION
 
 RUN apk add --no-cache musl-dev make g++
 
-RUN cargo install zizmor --version "${ZIZMOR_VERSION}" --locked
+RUN cargo install --git https://github.com/woodruffw/zizmor --tag "v${ZIZMOR_VERSION}" --locked zizmor
 
 
 FROM alpine:latest
