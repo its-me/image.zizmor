@@ -50,6 +50,7 @@ jobs:
       contents: read
       packages: write
     strategy:
+      fail-fast: false
       matrix:
         include:
           - { platform: linux/amd64,   runner: ubuntu-latest,    qemu: false }
